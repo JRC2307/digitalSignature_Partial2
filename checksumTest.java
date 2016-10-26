@@ -1,5 +1,3 @@
-package main;
- 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -10,7 +8,8 @@ import java.security.NoSuchAlgorithmException;
 public class checksumTest {
      
     public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
-        boolean result = verifyChecksum("./README.TXT", "5957743bb6dc27ec6abc6593baa00913");
+        boolean result = verifyChecksum("./README.txt", "5957743bb6dc27ec6abc6593baa00913");
+        
         System.out.println("Does the file's checksum matches the expected one? " + result);
     }
      
@@ -24,7 +23,7 @@ public class checksumTest {
      */
     public static boolean verifyChecksum(String file, String testChecksum) throws NoSuchAlgorithmException, IOException
     {
-        MessageDigest sha1 = MessageDigest.getInstance("SHA1");
+        MessageDigest sha1 = MessageDigest.getInstance("MD5");
         FileInputStream fis = new FileInputStream(file);
   
         byte[] data = new byte[1024];
@@ -40,8 +39,10 @@ public class checksumTest {
         }
          
         String fileHash = sb.toString();
-         
+        System.out.println(fileHash);
         return fileHash.equals(testChecksum);
+
+
     }
  
  
