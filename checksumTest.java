@@ -1,5 +1,8 @@
+import java.sql.Timestamp;
+import java.util.Date;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
  
@@ -8,19 +11,20 @@ import java.security.NoSuchAlgorithmException;
 public class checksumTest {
      
     public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
-        boolean result = verifyChecksum("./README.txt", "5957743bb6dc27ec6abc6593baa00913");
+        boolean result = verifyChecksum("./File.txt", "bb07227cc1571342cb4c29a74e5c7aa3");
         
-        System.out.println("Does the file's checksum matches the expected one? " + result);
+        System.out.println("Is the hash the same?" + result);
+        java.util.Date date= new java.util.Date();
+        //System.out.println(new Timestamp(date.getTime()).toString());
+
+         Writer writer = new FileWriter("File.txt", true);
+
+         writer.write(new Timestamp(date.getTime()).toString());
+         writer.write("\n");
+         writer.close();
+
     }
-     
-    /**
-     * Verifies file's SHA1 checksum
-     * @param Filepath and name of a file that is to be verified
-     * @param testChecksum the expected checksum
-     * @return true if the expeceted SHA1 checksum matches the file's SHA1 checksum; false otherwise.
-     * @throws NoSuchAlgorithmException
-     * @throws IOException
-     */
+    
     public static boolean verifyChecksum(String file, String testChecksum) throws NoSuchAlgorithmException, IOException
     {
         MessageDigest sha1 = MessageDigest.getInstance("MD5");
@@ -44,6 +48,7 @@ public class checksumTest {
 
 
     }
+
  
  
 }

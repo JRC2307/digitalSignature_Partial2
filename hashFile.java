@@ -8,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
 public class hashFile {
 public static void main(String[] args) throws Exception {
     MessageDigest md = MessageDigest.getInstance("MD5");
-    FileInputStream fis = new FileInputStream("./README.txt");
+    FileInputStream fis = new FileInputStream("./File.txt");
 
     byte[] dataBytes = new byte[1024];
 
@@ -21,6 +21,6 @@ public static void main(String[] args) throws Exception {
     for (int i = 0; i < mdbytes.length; i++) {
         sb.append(Integer.toString((mdbytes[i] & 0xff) + 0x100, 16).substring(1));
     }
-    System.out.println("Digest(in hex format):: " + sb.toString());
+    System.out.println("File's hash, this will be sent to the server: " + sb.toString());
 }
 }
