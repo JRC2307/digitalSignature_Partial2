@@ -11,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
 public class checksumTest {
      
     public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
-        boolean result = verifyChecksum("./File.txt", "bb07227cc1571342cb4c29a74e5c7aa3");
+        boolean result = verifyChecksum("./File.txt", "7e462697b5d327edbee9edcf88e717e9");
         
         System.out.println("Is the hash the same?" + result);
         java.util.Date date= new java.util.Date();
